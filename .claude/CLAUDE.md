@@ -1,5 +1,12 @@
 # Thunderbird for Android - Claude Development Guide
 
+## First Steps for Any Task
+
+Before starting work:
+1. Identify which docs apply (see Authoritative Documentation table)
+2. Read those docs using: `cat docs/contributing/<relevant-guide>.md`
+3. Then proceed with the task
+
 ## Critical Pre-Flight Checks
 
 **Before ANY commit:**
