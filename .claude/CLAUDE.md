@@ -30,6 +30,8 @@ Always consult these docs for detailed guidance. They are the source of truth:
 | Contribution workflow | `docs/contributing/contribution-workflow.md` |
 | Development setup | `docs/contributing/development-environment.md` |
 | Architecture | `docs/architecture/README.md` |
+| Module organization | `docs/architecture/module-organization.md` |
+| **Legacy migration** | `docs/architecture/legacy-module-integration.md` |
 | Code quality | `docs/contributing/code-quality-guide.md` |
 | Testing | `docs/contributing/testing-guide.md` |
 | Git commits | `docs/contributing/git-commit-guide.md` |
@@ -48,8 +50,16 @@ feature:foo:api   → Public interfaces (depend on THIS)
 feature:foo:impl  → Implementation (NEVER depend externally)
 core:*            → Foundational utilities
 library:*         → Specific implementations
+app-common        → Legacy bridges & integration code
 legacy:*          → DO NOT add new code here
 ```
+
+### Legacy Code Migration
+When working with legacy code, follow `docs/architecture/legacy-module-integration.md`:
+- **NEVER** add new code to `legacy:*`, `mail:*`, or `backend:*` modules
+- Access legacy functionality through interfaces defined in `feature:*:api` or `core:*`
+- Create bridge implementations in `app-common` that delegate to legacy code
+- Use dedicated mapper classes for data conversion between legacy and modern types
 
 ### Testing Conventions
 - Name test subject: `testSubject` (NOT "sut")
